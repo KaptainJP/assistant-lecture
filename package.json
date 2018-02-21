@@ -1,0 +1,13 @@
+{
+  "name": "assistant-lecture",
+  "version": "1.0.0",
+  "description": "Plugin lecture pour un Google Home via le package assistant-plugins",
+  "author": "KaptainJP",
+  "main":"lecture.js",
+  "repository":"https://github.com/kaptainJP/assistant-lecture/",
+  "license": "MIT",
+  "dependencies": {
+    "castv2-client": "^1.2.0",
+    "google-tts-api": "0.0.2"
+  }
+}
