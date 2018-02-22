@@ -47,16 +47,13 @@ AssistantLecture.prototype.init = function(plugins) {
  * @param {String} commande La commande envoyée depuis IFTTT par Pushbullet
  * @return {Promise}
  */
-AssistantLecture.prototype.action = function(commande) {
-  // la commande va ressembler à http://www.truc.fr/webservice/trucalire.php
+AssistantLecture.prototype.action = function() {
   var _this=this;
-  commande = '"'+commande.replace(/'/g,'\\"').replace(/, /g,",")+'"';
-  commande = JSON.parse(commande);
-  if (typeof commande==="string") commande = JSON.parse(commande);
   return request({
     'url' : _this.url  })
   .then(function(response){
     if (response) {
+      console.log("[Assistant-Lecture] reponse"+ response);
       var body = JSON.parse(response);
 	  var lerc = body.Erreur;
 	  if (lerc > 0) return _this.plugins.notifier.action("Je n'ai pas d'information pour le moment");
@@ -77,6 +74,7 @@ AssistantLecture.prototype.action = function(commande) {
   .catch(function(err) {
     console.log("[Assistant-Lecture] Erreur => ",err)
   })
+
 };
 
 /**
